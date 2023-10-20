@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import {
   View,
   Text,
@@ -28,7 +28,7 @@ const Login = () => {
 
   const handleSignUp = () => {
     // Navegue para a tela de cadastro
-    navigation.navigate("RegisterScreen"); 
+    navigation.navigate("RegisterScreen");
   };
 
   return (
@@ -56,11 +56,9 @@ const Login = () => {
           <Text style={styles.buttonText}>Fazer Login</Text>
         </TouchableOpacity>
       </View>
-      <Text>
+      <Text style={styles.signupLabel}>
         Não tem uma conta?
-        <TouchableOpacity onPress={handleSignUp}>
-          <Text style={styles.signupText}>Cadastre-se</Text>
-        </TouchableOpacity>
+        <Text style={styles.signupText} onPress={handleSignUp}> Cadastre-se</Text>
       </Text>
       <Image
         source={require("../assets/LogoHome.png")}
@@ -184,6 +182,29 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     fontWeight: "500",
     lineHeight: 45,
+  },
+  signupLabel: {
+    color: "#E4B24F",
+    textAlign: "center",
+    textShadowColor: "#000",
+    textShadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    textShadowRadius: 4,
+    fontFamily: "Poppins",
+    fontSize: 20, // 1.25rem = 20 (1rem = 16px)
+    fontStyle: "italic",
+    fontWeight: "500",
+    lineHeight: 53.35, // 3.33781rem = 53.35 (1rem = 16px)
+  },
+  signupText: {
+    color: "#FFF",
+    fontFamily: "Poppins",
+    fontSize: 20, // 1.25rem = 20 (1rem = 16px)
+    fontStyle: "italic",
+    fontWeight: "500",
+    lineHeight: 53.35, // 3.33781rem = 53.35 (1rem = 16px)
   },
 });
 
