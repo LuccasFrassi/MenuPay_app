@@ -13,7 +13,7 @@ const Login = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>Conecte-se!</Text>
       </View>
       <Text style={styles.label}>E-mail:</Text>
       <TextInput
