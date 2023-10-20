@@ -9,6 +9,7 @@ import ConfigurationScreen from './screens/ConfigurationScreen';
 import PreparingOrderScreen from './screens/PreparingOrderScreen';
 import InitialScreen from './screens/InitialScreen';
 import DeliveryScreen from './screens/DeliveryScreen';
+import RegisterScreen from './screens/RegisterScreen';
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -17,6 +18,7 @@ export default function Navigation() {
         <Stack.Navigator initialR outeName='InitialScreen'>
             <Stack.Screen name="InitialScreen" component={InitialScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+            <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name="ConfigurationScreen" component={ConfigurationScreen} />
             <Stack.Screen name="Restaurant" component={RestaurantScreen} />

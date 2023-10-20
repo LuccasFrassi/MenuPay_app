@@ -10,12 +10,12 @@ import {
   ScrollView,
 } from "react-native";
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
 
-  const handleLogin = () => {
+  const handleRegister = () => {
     // Verifique as credenciais do usuário (exemplo simplificado)
     if (email === "" && password === "") {
       // Login bem-sucedido, navegue para a tela "Home"
@@ -26,16 +26,16 @@ const Login = () => {
     }
   };
 
-  const handleSignUp = () => {
+  const handleLogin = () => {
     // Navegue para a tela de cadastro
-    navigation.navigate("RegisterScreen"); 
+    navigation.navigate("Login"); // "Cadastro" é o nome da tela de cadastro em sua navegação
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.cmpcontainer}>
         <View style={styles.header}>
-          <Text style={styles.title}>Login</Text>
+          <Text style={styles.title}>Cadastro</Text>
         </View>
         <Text style={styles.label}>E-mail:</Text>
         <TextInput
@@ -52,13 +52,13 @@ const Login = () => {
           onChangeText={(text) => setPassword(text)}
           value={password}
         />
-        <TouchableOpacity style={styles.buttonContainer} onPress={handleLogin}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={handleRegister}>
           <Text style={styles.buttonText}>Fazer Login</Text>
         </TouchableOpacity>
       </View>
       <Text>
         Não tem uma conta?
-        <TouchableOpacity onPress={handleSignUp}>
+        <TouchableOpacity onPress={handleLogin}>
           <Text style={styles.signupText}>Cadastre-se</Text>
         </TouchableOpacity>
       </Text>
@@ -187,4 +187,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Register;
