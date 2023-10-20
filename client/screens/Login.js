@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     textShadowColor: "#000",
     textShadowOffset: {
       width: 0,
-      height: 4,
+      height: 2,
     },
     textShadowRadius: 4,
     fontFamily: "Inter",
@@ -167,21 +167,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     lineHeight: 83.48,
     paddingRight: 250,
-  },
-  buttonText: {
-    color: "#7A0705",
-    textAlign: "center",
-    textShadowColor: "#000",
-    textShadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    textShadowRadius: 4,
-    fontFamily: "Inter",
-    fontSize: 36,
-    fontStyle: "italic",
-    fontWeight: "500",
-    lineHeight: 45,
   },
   signupLabel: {
     color: "#E4B24F",
