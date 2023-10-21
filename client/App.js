@@ -5,6 +5,7 @@ import { store } from './store';
 import { SplashScreen } from './screens/SplashScreen';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
+import { Provider } from 'react-redux';
 import {
   useFonts,
   Roboto_400Regular,
@@ -46,7 +47,7 @@ export default function App() {
   }
 
   return splashComplete ? (
-    <Navigation />
+    <Provider store={store}><Navigation /></Provider>
   ) : (
     <SplashScreen onComplete={setSplashComplete} />
   );

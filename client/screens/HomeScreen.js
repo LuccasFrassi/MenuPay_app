@@ -43,7 +43,7 @@ export default function HomeScreen() {
     onPress={() => navigation.navigate('ConfigurationScreen')}
 >
     <View style={{ position: 'relative' }}>
-        <Icon.Settings stroke="#FFD700" fill="#FFD700" width={30} height={30} />
+        <Icon.Settings stroke="#E4B24F" fill="#E4B24F" width={30} height={30} />
         <Icon.Circle fill="white" width={10} height={10} style={{ position: 'absolute', top: '50%', left: '50%', transform: [{ translateX: -5 }, { translateY: -5 }] }} />
     </View>
 </TouchableOpacity>
@@ -54,14 +54,7 @@ export default function HomeScreen() {
           <View className="flex-row items-center space-x-2 px-4 pb-2 ">
             <View className="flex-row flex-1 items-center p-3 rounded-full border border-gray-300">
                 <Icon.Search height="25" width="25" stroke="gray" />
-                <TextInput placeholder='Restaurants' className="ml-2 flex-1" keyboardType='default' />
-                <View className="flex-row items-center space-x-1 border-0 border-l-2 pl-2 border-l-gray-300">
-                    <Icon.MapPin height="20" width="20" stroke="gray" />
-                    <Text className="text-gray-600">Guarujá, SP</Text>
-                </View>
-            </View>
-            <View style={{backgroundColor: themeColors.bgColor(1)}} className="p-3 rounded-full">
-                <Icon.Sliders height={20} width={20} strokeWidth="2.5" stroke="white" />
+                <TextInput placeholder='Pesquise aqui...' className="ml-2 flex-1" keyboardType='default' />
             </View>
         </View>
 
