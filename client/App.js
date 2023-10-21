@@ -8,7 +8,7 @@ import * as Font from 'expo-font';
 import {
   useFonts,
   Roboto_400Regular,
-  Roboto_700Bold
+  Roboto_700Bold,
 } from '@expo-google-fonts/roboto';
 
 export default function App() {
@@ -17,13 +17,13 @@ export default function App() {
 
   // Define as fontes personalizadas
   const customFonts = {
-    'RockStyle': require('./assets/fonts/RockStyle.ttf'),
+    RockStyle: require('./assets/fonts/RockStyle.ttf'),
   };
 
-  const [ fontsLoaded ] = useFonts({
+  const [fontsLoaded] = useFonts({
     Roboto_400Regular,
-    Roboto_700Bold
-  })
+    Roboto_700Bold,
+  });
 
   // Função para carregar as fontes personalizadas
   async function loadCustomFonts() {
@@ -45,5 +45,9 @@ export default function App() {
     return <AppLoading />;
   }
 
-  return splashComplete ? <Navigation /> : <SplashScreen onComplete={setSplashComplete} />;
+  return splashComplete ? (
+    <Navigation />
+  ) : (
+    <SplashScreen onComplete={setSplashComplete} />
+  );
 }
