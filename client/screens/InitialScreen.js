@@ -1,72 +1,87 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ImageBackground,
+  Image,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const InitialScreen = () => {
   const navigation = useNavigation();
   return (
-
-    
-<ImageBackground 
-    source={require('../assets/Mobile_SemT.png')} 
-    style={styles.background}
->
-    <Image 
-        source={require('../assets/LogoHome.png')} 
+    <ImageBackground
+      source={require('../assets/Mobile_SemT.png')}
+      style={styles.background}
+    >
+      <Image
+        source={require('../assets/LogoHome.png')}
         style={styles.logo}
-        resizeMode="contain"
-    />
- <Text style={styles.textHeader}>Chega de <Text style={styles.textHighlight}>esperar em fila!</Text></Text>
-    <View style={styles.container}>
-        <TouchableOpacity 
-            style={styles.button}
-            onPress={() => navigation.navigate('Login')}
+        resizeMode='contain'
+      />
+      <View style={styles.textWrapper}>
+        <Text style={styles.textHeader}>Chega de</Text>
+        <Text style={{ ...styles.textHeader, ...styles.textHighlight }}>
+          esperar em fila!
+        </Text>
+      </View>
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Login')}
         >
-            <Text style={styles.buttonText}>Faça sua reserva em minutos</Text>
+          <Text style={styles.buttonText}>Faça sua reserva em minutos</Text>
         </TouchableOpacity>
-    </View>
-</ImageBackground>
-
+      </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   background: {
-      flex: 1,
-      justifyContent: 'center',
+    flex: 1,
+    justifyContent: 'center',
   },
   container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   button: {
-      padding: 15,
-      backgroundColor: 'rgba(0,0,0,0.6)', // cor de fundo semi-transparente
-      borderRadius: 5,
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 150,
+    paddingVertical: 3,
+    paddingHorizontal: 6,
+    borderRadius: 10,
+    borderColor: '#fcc358',
+    borderWidth: 3,
   },
   buttonText: {
-      color: 'white',
-      fontSize: 16,
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
+    fontStyle: 'italic',
   },
   logo: {
-    width: '100%', 
-    height: 250, 
+    width: '100%',
+    height: 250,
     alignSelf: 'center',
-    marginBottom: 40  // Espaço entre a imagem e o botão, ajuste conforme necessário
-},
-textHeader: {
-    fontFamily: 'RockStyle',  // Certifique-se de ter essa fonte instalada e configurada
-    fontSize: 50,
+    marginBottom: 40, // Espaço entre a imagem e o botão, ajuste conforme necessário
+  },
+  textWrapper: { marginTop: 180 },
+  textHeader: {
+    fontFamily: 'RockStyle', // Certifique-se de ter essa fonte instalada e configurada
+    fontSize: 55,
     color: 'white',
     textAlign: 'center',
-    marginBottom: 10  // Espaço entre o texto e o botão, ajuste conforme necessário
-},
-textHighlight: {
-    color: '#FFD700'  // Cor dourada
-}
-
-
+  },
+  textHighlight: {
+    marginTop: -20,
+    color: '#fcc358', // Cor dourada
+  },
 });
 
 export default InitialScreen;
