@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 4,
     elevation: 4,
-    marginBottom: 20,
+    marginBottom: 8,
   },
   logo: {
     width: 300,
@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 0,
+    marginTop: 40,
     borderRadius: 62.5,
     borderWidth: 2,
     borderColor: "#000",
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
       height: 2,
     },
     textShadowRadius: 4,
-    fontFamily: "Inter",
+    fontFamily: "Roboto_700Bold",
     fontSize: 36, // 2.25rem = 36 (1rem = 16px)
     fontStyle: "italic",
     fontWeight: "500",
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
       height: 4,
     },
     textShadowRadius: 4,
-    fontFamily: "Poppins",
+    fontFamily: "Roboto_700Bold",
     fontSize: 20, // 1.25rem = 20 (1rem = 16px)
     fontStyle: "italic",
     fontWeight: "500",
@@ -185,7 +186,7 @@ const styles = StyleSheet.create({
   },
   signupText: {
     color: "#FFF",
-    fontFamily: "Poppins",
+    fontFamily: "Roboto_700Bold",
     fontSize: 20, // 1.25rem = 20 (1rem = 16px)
     fontStyle: "italic",
     fontWeight: "500",

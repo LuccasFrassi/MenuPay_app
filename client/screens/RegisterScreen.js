@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import {
   View,
   Text,
@@ -13,22 +13,26 @@ import {
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigation = useNavigation();
 
   const handleRegister = () => {
-    // Verifique as credenciais do usuário (exemplo simplificado)
-    if (email === "" && password === "") {
-      // Login bem-sucedido, navegue para a tela "Home"
-      navigation.navigate("Home"); // "Home" é o nome da tela de destino
-    } else {
-      // Caso contrário, exiba uma mensagem de erro ou faça o que for necessário
-      console.log("Credenciais inválidas");
+    // Valide se a senha e a confirmação de senha correspondem
+    if (password !== confirmPassword) {
+      console.log("As senhas não coincidem");
+      return;
     }
+
+    // Você pode adicionar lógica aqui para processar o cadastro do usuário
+    // Por exemplo, enviar os dados de cadastro para um servidor ou banco de dados.
+
+    // Após o cadastro bem-sucedido, navegue para a tela "Home"
+    navigation.navigate("Home");
   };
 
   const handleLogin = () => {
     // Navegue para a tela de cadastro
-    navigation.navigate("Login"); // "Cadastro" é o nome da tela de cadastro em sua navegação
+    navigation.navigate("Login");
   };
 
   return (
@@ -52,15 +56,27 @@ const Register = () => {
           onChangeText={(text) => setPassword(text)}
           value={password}
         />
-        <TouchableOpacity style={styles.buttonContainer} onPress={handleRegister}>
-          <Text style={styles.buttonText}>Fazer Login</Text>
+        <Text style={styles.labelConfirm}>Confirmar Senha:</Text>
+        <TextInput
+          style={[styles.input, { marginTop: 20 }]}
+          placeholder=""
+          secureTextEntry={true}
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+        />
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={handleRegister}
+        >
+          <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
       </View>
-      <Text>
-        Não tem uma conta?
-        <TouchableOpacity onPress={handleLogin}>
-          <Text style={styles.signupText}>Cadastre-se</Text>
-        </TouchableOpacity>
+      <Text style={styles.signupLabel}>
+        Já tem uma conta?
+        <Text style={styles.signupText} onPress={handleLogin}>
+          {" "}
+          Fazer Login
+        </Text>
       </Text>
       <Image
         source={require("../assets/LogoHome.png")}
@@ -84,6 +100,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 60,
   },
+  header: {
+    paddingLeft: 30,
+    marginRight: -30,
+  },
   title: {
     fontSize: 36,
     color: "white",
@@ -103,7 +123,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 4,
     elevation: 4,
-    marginBottom: 20,
+    marginBottom: 0,
   },
   logo: {
     width: 300,
@@ -121,6 +141,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 0,
+    marginTop: 40,
     borderRadius: 62.5,
     borderWidth: 2,
     borderColor: "#000",
@@ -133,21 +154,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 4,
   },
-  buttonText: {
-    color: "#7A0705", // Cor do texto
-    textAlign: "center",
-    textShadowColor: "#000",
-    textShadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    textShadowRadius: 4,
-    fontFamily: "Inter",
-    fontSize: 36, // 2.25rem = 36 (1rem = 16px)
-    fontStyle: "italic",
-    fontWeight: "500",
-    lineHeight: 45, // 1.25rem = 20 (1rem = 16px)
-  },
   title: {
     fontSize: 36,
     paddingRight: 250,
@@ -157,12 +163,9 @@ const styles = StyleSheet.create({
   label: {
     height: 60,
     color: "#E4B24F",
-    marginBottom: -3,
+    marginBottom: -18,
     textShadowColor: "#000",
-    textShadowOffset: {
-      width: 0,
-      height: 4,
-    },
+    textShadowOffset: { width: 0,height: 4 },
     textShadowRadius: 4,
     fontSize: 25,
     fontStyle: "italic",
@@ -176,14 +179,50 @@ const styles = StyleSheet.create({
     textShadowColor: "#000",
     textShadowOffset: {
       width: 0,
-      height: 4,
+      height: 2,
     },
     textShadowRadius: 4,
-    fontFamily: "Inter",
+    fontFamily: "Roboto_400Regular",
     fontSize: 36,
     fontStyle: "italic",
     fontWeight: "500",
     lineHeight: 45,
+  },
+  signupLabel: {
+    color: "#E4B24F",
+    textAlign: "center",
+    textShadowColor: "#000",
+    textShadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    textShadowRadius: 4,
+    fontFamily: "Roboto_700Bold",
+    fontSize: 20, // 1.25rem = 20 (1rem = 16px)
+    fontStyle: "italic",
+    fontWeight: "500",
+    lineHeight: 53.35, // 3.33781rem = 53.35 (1rem = 16px)
+  },
+  signupText: {
+    color: "#FFF",
+    fontFamily: "Roboto_700Bold",
+    fontSize: 20, // 1.25rem = 20 (1rem = 16px)
+    fontStyle: "italic",
+    fontWeight: "500",
+    lineHeight: 53.35, // 3.33781rem = 53.35 (1rem = 16px)
+  },
+  labelConfirm: {
+    color: "#E4B24F",
+    textAlign: "center",
+    textShadowColor: "#000",
+    textShadowOffset: { width: 0, height: 4 },
+    textShadowRadius: 4,
+    fontSize: 25, // 1.5625rem em pixels (considerando 16 pixels por rem)
+    fontStyle: "italic",
+    fontWeight: "500",
+    lineHeight: 80, // 3.33781rem em pixels (considerando 24 pixels por rem)
+    paddingRight: 145,
+    marginBottom: -40,
   },
 });
 

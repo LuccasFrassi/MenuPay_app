@@ -5,6 +5,11 @@ import { store } from './store';
 import { SplashScreen } from './screens/SplashScreen';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_700Bold
+} from '@expo-google-fonts/roboto';
 
 export default function App() {
   const [splashComplete, setSplashComplete] = useState(false);
@@ -14,6 +19,11 @@ export default function App() {
   const customFonts = {
     'RockStyle': require('./assets/fonts/RockStyle.ttf'),
   };
+
+  const [ fontsLoaded ] = useFonts({
+    Roboto_400Regular,
+    Roboto_700Bold
+  })
 
   // Função para carregar as fontes personalizadas
   async function loadCustomFonts() {
@@ -28,6 +38,10 @@ export default function App() {
 
   // Verifique se as fontes personalizadas foram carregadas antes de renderizar o conteúdo do aplicativo
   if (!customFontsLoaded) {
+    return <AppLoading />;
+  }
+
+  if (!fontsLoaded) {
     return <AppLoading />;
   }
 
