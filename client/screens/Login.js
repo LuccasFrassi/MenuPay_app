@@ -44,7 +44,7 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/Mobile_SemT.png')}
+        source={require('../assets/hamburguer_background.png')}
         style={styles.backgroundImage}
       />
 

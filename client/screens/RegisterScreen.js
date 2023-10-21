@@ -38,8 +38,10 @@ const Register = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/Mobile_SemT.png')}
-        style={styles.backgroundImage}
+        source={require('../assets/hamburguer_background.png')}
+        style={{
+          ...styles.backgroundImage,
+        }}
       />
       <HeaderTitle title={'Cadastre-se!'} />
       <View style={styles.cmpcontainer}>
