@@ -53,7 +53,7 @@ export default function HomeScreen() {
                         <Icon.Circle fill="white" width={10} height={10} style={{ position: 'absolute', top: '50%', left: '50%', transform: [{ translateX: -5 }, { translateY: -5 }] }} />
                     </View>
                 </TouchableOpacity>
-
+                
             </View>
 
           {/* search bar */}
@@ -62,7 +62,9 @@ export default function HomeScreen() {
                 <Icon.Search height="25" width="25" stroke="gray" />
                 <TextInput placeholder='Pesquise aqui...' className="ml-2 flex-1" keyboardType='default' />
             </View>
+            
         </View>
+        
 
     {/* main */}
     <ScrollView
@@ -74,7 +76,7 @@ export default function HomeScreen() {
        
         {/* categories */}
         <Categories />
-
+        
         <View className="mt-5">
         {
             rearrangedCategories.map(category => {
