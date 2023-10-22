@@ -6,6 +6,7 @@ import FeatureRow from '../components/featuredRow'
 import { getFeaturedRestaurants } from '../api';
 import * as Icon from "react-native-feather";
 import { themeColors } from '../theme'
+import NavegationBar from '../components/NavegationBar';
 
 export default function HomeScreen() {
 
@@ -79,20 +80,19 @@ export default function HomeScreen() {
             rearrangedCategories.map(category => {
                 return (
                     <FeatureRow 
-                        key={category._id}
-                        id={category._id}
-                        title={category.name}
-                        restaurants={category?.restaurants}
-                        description={category.description}
-                        featuredCategory={category._type}
+                    key={category._id}
+                    id={category._id}
+                    title={category.name}
+                    restaurants={category?.restaurants}
+                    description={category.description}
+                    featuredCategory={category._type}
                     />
-                )
-            })
-        }
+                    )
+                })
+            }
         </View>
-       
     </ScrollView>
-      
+    <NavegationBar/>
     </SafeAreaView>
   )
 }

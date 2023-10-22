@@ -21,7 +21,7 @@ export default function BasketIcon() {
               <Text className="font-extrabold text-white text-lg">{basketItems.length}</Text>
             </View>
             
-            <Text className="flex-1 text-center font-extrabold text-white text-lg">View Cart</Text>
+            <Text className="flex-1 text-center font-extrabold text-white text-lg">Seus Pedidos</Text>
             <Text className="font-extrabold text-white text-lg">${basketTotal}</Text>
         
         </TouchableOpacity>
