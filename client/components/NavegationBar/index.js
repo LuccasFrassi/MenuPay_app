@@ -19,7 +19,7 @@ const NavigationBar = () => {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OrderListScreen')}>
         <Icon name="list-ul" size={30} color="#520201" />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ProfileScreen')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Profile')}>
         <Icon name="user" size={30} color="#520201" />
       </TouchableOpacity>
     </View>
