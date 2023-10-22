@@ -27,10 +27,6 @@ export default function FeatureRow({id, title, description, restaurants}) {
             {description}
           </Text>
         </View>
-        
-        <TouchableOpacity>
-          <Text style={{color: themeColors.text}} className="font-semibold">See All</Text>
-        </TouchableOpacity>
       </View>
 
       

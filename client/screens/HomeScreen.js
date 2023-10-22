@@ -20,8 +20,13 @@ export default function HomeScreen() {
         })
     },[])
 
-
-
+    // Reorganize as categorias para colocar "Destaques" no início
+    const rearrangedCategories = featuredCategories.slice(); // Crie uma cópia
+    const destaquesCategory = rearrangedCategories.find(category => category.name === 'Destaques');
+    if (destaquesCategory) {
+        rearrangedCategories.splice(rearrangedCategories.indexOf(destaquesCategory), 1);
+        rearrangedCategories.unshift(destaquesCategory);
+    }
 
     return (
         <SafeAreaView className="bg-white" style={{ flex: 1 }}>
@@ -39,14 +44,14 @@ export default function HomeScreen() {
     
                 {/* Botão de Engrenagem com ícone */}
                 <TouchableOpacity 
-    style={{ marginLeft: -12, marginRight: -15 }}
-    onPress={() => navigation.navigate('ConfigurationScreen')}
->
-    <View style={{ position: 'relative' }}>
-        <Icon.Settings stroke="#E4B24F" fill="#E4B24F" width={30} height={30} />
-        <Icon.Circle fill="white" width={10} height={10} style={{ position: 'absolute', top: '50%', left: '50%', transform: [{ translateX: -5 }, { translateY: -5 }] }} />
-    </View>
-</TouchableOpacity>
+                    style={{ marginLeft: -12, marginRight: -15 }}
+                    onPress={() => navigation.navigate('ConfigurationScreen')}
+                >
+                    <View style={{ position: 'relative' }}>
+                        <Icon.Settings stroke="#E4B24F" fill="#E4B24F" width={30} height={30} />
+                        <Icon.Circle fill="white" width={10} height={10} style={{ position: 'absolute', top: '50%', left: '50%', transform: [{ translateX: -5 }, { translateY: -5 }] }} />
+                    </View>
+                </TouchableOpacity>
 
             </View>
 
@@ -57,8 +62,6 @@ export default function HomeScreen() {
                 <TextInput placeholder='Pesquise aqui...' className="ml-2 flex-1" keyboardType='default' />
             </View>
         </View>
-
-         
 
     {/* main */}
     <ScrollView
@@ -71,26 +74,22 @@ export default function HomeScreen() {
         {/* categories */}
         <Categories />
 
-        {/* featured */}
         <View className="mt-5">
         {
-            featuredCategories?.map(category=>{
+            rearrangedCategories.map(category => {
                 return (
-                        <FeatureRow 
-                            key={category._id}
-                            id={category._id}
-                            title={category.name}
-                            restaurants={category?.restaurants}
-                            description={category.description}
-                            featuredCategory={category._type}
-                        />
+                    <FeatureRow 
+                        key={category._id}
+                        id={category._id}
+                        title={category.name}
+                        restaurants={category?.restaurants}
+                        description={category.description}
+                        featuredCategory={category._type}
+                    />
                 )
             })
         }
         </View>
-        
-
-        
        
     </ScrollView>
       
