@@ -1,89 +1,46 @@
-import { View, Text, SafeAreaView, StatusBar, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native'
-import React, { useLayoutEffect, useState, useEffect } from 'react'
-import { useNavigation } from '@react-navigation/native'
-import Categories from '../components/categories'
-import FeatureRow from '../components/featuredRow'
+import React, { useLayoutEffect, useState, useEffect } from 'react';
+import { View, Text, SafeAreaView, StatusBar, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Categories from '../components/categories';
+import FeatureRow from '../components/featuredRow';
 import { getFeaturedRestaurants } from '../api';
-import * as Icon from "react-native-feather";
-import { themeColors } from '../theme'
+import { SearchBar } from '../components/SearchBar';
+import { HomeHeader } from '../components/HomeHeader';
+
+const styles = {
+    safeAreaView: {
+        flex: 1,
+        backgroundColor: 'white',
+    }
+};
 
 export default function HomeScreen() {
-
-    const [featuredCategories, setFeaturedCategories] = useState([])
+    const [featuredCategories, setFeaturedCategories] = useState([]);
     const navigation = useNavigation();
+
     useLayoutEffect(() => {
-      navigation.setOptions({headerShown: false})
-    }, [])
-    useEffect(()=>{
-        getFeaturedRestaurants().then(data=>{
+        navigation.setOptions({ headerShown: false });
+    }, []);
+
+    useEffect(() => {
+        getFeaturedRestaurants().then(data => {
             setFeaturedCategories(data);
-        })
-    },[])
-
-
-
+        });
+    }, []);
 
     return (
-        <SafeAreaView className="bg-white" style={{ flex: 1 }}>
+        <SafeAreaView style={styles.safeAreaView}>
             <StatusBar barStyle="dark-content" />
-    
-            {/* Contêiner para a imagem e o ícone */}
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                
-                {/* Logo */}
-                <Image 
-                    source={require('../assets/LogoHome.png')} 
-                    style={{ width: '80%', height: 100, alignSelf: 'center' }} 
-                    resizeMode="contain"
-                />
-    
-                {/* Botão de Engrenagem com ícone */}
-                <TouchableOpacity 
-    style={{ marginLeft: -12, marginRight: -15 }}
-    onPress={() => navigation.navigate('ConfigurationScreen')}
->
-    <View style={{ position: 'relative' }}>
-        <Icon.Settings stroke="#FFD700" fill="#FFD700" width={30} height={30} />
-        <Icon.Circle fill="white" width={10} height={10} style={{ position: 'absolute', top: '50%', left: '50%', transform: [{ translateX: -5 }, { translateY: -5 }] }} />
-    </View>
-</TouchableOpacity>
 
-            </View>
+            <HomeHeader />
+            <SearchBar />
 
-          {/* search bar */}
-          <View className="flex-row items-center space-x-2 px-4 pb-2 ">
-            <View className="flex-row flex-1 items-center p-3 rounded-full border border-gray-300">
-                <Icon.Search height="25" width="25" stroke="gray" />
-                <TextInput placeholder='Restaurants' className="ml-2 flex-1" keyboardType='default' />
-                <View className="flex-row items-center space-x-1 border-0 border-l-2 pl-2 border-l-gray-300">
-                    <Icon.MapPin height="20" width="20" stroke="gray" />
-                    <Text className="text-gray-600">Guarujá, SP</Text>
-                </View>
-            </View>
-            <View style={{backgroundColor: themeColors.bgColor(1)}} className="p-3 rounded-full">
-                <Icon.Sliders height={20} width={20} strokeWidth="2.5" stroke="white" />
-            </View>
-        </View>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 50 }}>
+                <Categories />
 
-         
-
-    {/* main */}
-    <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-            paddingBottom: 50
-        }}
-    >
-       
-        {/* categories */}
-        <Categories />
-
-        {/* featured */}
-        <View className="mt-5">
-        {
-            featuredCategories?.map(category=>{
-                return (
-                        <FeatureRow 
+                <View style={{ marginTop: 5 }}>
+                    {featuredCategories?.map(category => (
+                        <FeatureRow
                             key={category._id}
                             id={category._id}
                             title={category.name}
@@ -91,16 +48,9 @@ export default function HomeScreen() {
                             description={category.description}
                             featuredCategory={category._type}
                         />
-                )
-            })
-        }
-        </View>
-        
-
-        
-       
-    </ScrollView>
-      
-    </SafeAreaView>
-  )
+                    ))}
+                </View>
+            </ScrollView>
+        </SafeAreaView>
+    );
 }
