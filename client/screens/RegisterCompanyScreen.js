@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
-  useFonts,
-  Poppins_400Regular,
-  Poppins_700Bold,
-} from '@expo-google-fonts/roboto';
-import {
   View,
   Text,
   TextInput,
@@ -15,46 +10,42 @@ import {
 } from 'react-native';
 import HeaderTitle from '../components/HeaderTitle';
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const navigation = useNavigation();
 
-  let [fontsLoaded] = useFonts({
-    Poppins_400Regular,
-    Poppins_700Bold,
-  });
+  const handleRegister = () => {
+    // Valide se a senha e a confirmação de senha correspondem
+    if (password !== confirmPassword) {
+      console.log('As senhas não coincidem');
+      return;
+    }
+
+    // Você pode adicionar lógica aqui para processar o cadastro do usuário
+    // Por exemplo, enviar os dados de cadastro para um servidor ou banco de dados.
+
+    // Após o cadastro bem-sucedido, navegue para a tela "Home"
+    navigation.navigate('Home');
+  };
 
   const handleLogin = () => {
-    // Verifique as credenciais do usuário (exemplo simplificado)
-    if (email === '' && password === '') {
-      // Login bem-sucedido, navegue para a tela "Home"
-      navigation.navigate('Home'); // "Home" é o nome da tela de destino
-    } else {
-      // Caso contrário, exiba uma mensagem de erro ou faça o que for necessário
-      console.log('Credenciais inválidas');
-    }
-  };
-
-  const handleSignUp = () => {
-    // Navegue para a tela de cadastro
-    navigation.navigate('RegisterScreen');
-  };
-
-  const handleLoginCompany = () => {
     // Navegue para a tela de cadastro
     navigation.navigate('LoginCompany');
   };
+
   return (
     <View style={styles.container}>
       <Image
         source={require('../assets/bg_red.png')}
-        style={styles.backgroundImage}
+        style={{
+          ...styles.backgroundImage,
+        }}
       />
-
-      <HeaderTitle title={'Conecte-se!'} />
+      <HeaderTitle title={'Cadastre-se!'} />
       <View style={styles.cmpcontainer}>
-        <Text style={styles.label}>E-mail:</Text>
+        <Text style={styles.label}>CNPJ: </Text>
         <TextInput
           style={[styles.input, { marginTop: 20 }]}
           placeholder=''
@@ -69,22 +60,26 @@ const Login = () => {
           onChangeText={(text) => setPassword(text)}
           value={password}
         />
-        <TouchableOpacity style={styles.buttonContainer} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Fazer Login</Text>
+        <Text style={styles.labelConfirm}>Confirmar Senha:</Text>
+        <TextInput
+          style={[styles.input, { marginTop: 20 }]}
+          placeholder=''
+          secureTextEntry={true}
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+        />
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={handleRegister}
+        >
+          <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.signupLabel}>
-        Não tem uma conta?
-        <Text style={styles.signupText} onPress={handleSignUp}>
+        Já tem sua empresa cadastrada?
+        <Text style={styles.signupText} onPress={handleLogin}>
           {' '}
-          Cadastre-se
-        </Text>
-      </Text>
-      <Text style={styles.signupLabel}>
-        Fazer login como empresa?
-        <Text style={styles.signupText} onPress={handleLoginCompany}>
-          {' '}
-          Login
+          Fazer Login
         </Text>
       </Text>
       <Image
@@ -112,7 +107,7 @@ const styles = StyleSheet.create({
   cmpcontainer: {
     flexGrow: 1,
     alignItems: 'center',
-    marginTop: 30,
+    paddingTop: 60,
   },
   input: {
     width: 350,
@@ -129,7 +124,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 4,
     elevation: 4,
-    marginBottom: 8,
+    marginBottom: 0,
   },
   logo: {
     width: 300,
@@ -160,8 +155,21 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 4,
   },
+  label: {
+    height: 60,
+    color: '#E4B24F',
+    marginBottom: -18,
+    textShadowColor: '#000',
+    textShadowOffset: { width: 0, height: 4 },
+    textShadowRadius: 4,
+    fontSize: 25,
+    fontStyle: 'italic',
+    fontWeight: '500',
+    lineHeight: 83.48,
+    paddingRight: 250,
+  },
   buttonText: {
-    color: '#7A0705', // Cor do texto
+    color: '#7A0705',
     textAlign: 'center',
     textShadowColor: '#000',
     textShadowOffset: {
@@ -169,27 +177,11 @@ const styles = StyleSheet.create({
       height: 2,
     },
     textShadowRadius: 4,
-    fontFamily: 'Roboto_700Bold',
-    fontSize: 36, // 2.25rem = 36 (1rem = 16px)
+    fontFamily: 'Roboto_400Regular',
+    fontSize: 36,
     fontStyle: 'italic',
     fontWeight: '500',
-    lineHeight: 45, // 1.25rem = 20 (1rem = 16px)
-  },
-  label: {
-    height: 60,
-    color: '#E4B24F',
-    marginBottom: -3,
-    textShadowColor: '#000',
-    textShadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    textShadowRadius: 4,
-    fontSize: 25,
-    fontStyle: 'italic',
-    fontWeight: '500',
-    lineHeight: 83.48,
-    paddingRight: 250,
+    lineHeight: 45,
   },
   signupLabel: {
     color: '#E4B24F',
@@ -214,6 +206,19 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     lineHeight: 53.35, // 3.33781rem = 53.35 (1rem = 16px)
   },
+  labelConfirm: {
+    color: '#E4B24F',
+    textAlign: 'center',
+    textShadowColor: '#000',
+    textShadowOffset: { width: 0, height: 4 },
+    textShadowRadius: 4,
+    fontSize: 25, // 1.5625rem em pixels (considerando 16 pixels por rem)
+    fontStyle: 'italic',
+    fontWeight: '500',
+    lineHeight: 80, // 3.33781rem em pixels (considerando 24 pixels por rem)
+    paddingRight: 145,
+    marginBottom: -40,
+  },
 });
 
-export default Login;
+export default Register;

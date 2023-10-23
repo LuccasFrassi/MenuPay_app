@@ -38,13 +38,14 @@ const Login = () => {
 
   const handleSignUp = () => {
     // Navegue para a tela de cadastro
-    navigation.navigate('RegisterScreen');
+    navigation.navigate('RegisterCompany');
+  };
+  
+  const handleClientLogin = () => {
+    // Navegue para a tela de cadastro
+    navigation.navigate('Login');
   };
 
-  const handleLoginCompany = () => {
-    // Navegue para a tela de cadastro
-    navigation.navigate('LoginCompany');
-  };
   return (
     <View style={styles.container}>
       <Image
@@ -54,7 +55,7 @@ const Login = () => {
 
       <HeaderTitle title={'Conecte-se!'} />
       <View style={styles.cmpcontainer}>
-        <Text style={styles.label}>E-mail:</Text>
+        <Text style={styles.label}>CNJP: </Text>
         <TextInput
           style={[styles.input, { marginTop: 20 }]}
           placeholder=''
@@ -74,15 +75,15 @@ const Login = () => {
         </TouchableOpacity>
       </View>
       <Text style={styles.signupLabel}>
-        Não tem uma conta?
+        Não tem um cadastro?
         <Text style={styles.signupText} onPress={handleSignUp}>
           {' '}
           Cadastre-se
         </Text>
       </Text>
       <Text style={styles.signupLabel}>
-        Fazer login como empresa?
-        <Text style={styles.signupText} onPress={handleLoginCompany}>
+        Logar como cliente?
+        <Text style={styles.signupText} onPress={handleClientLogin}>
           {' '}
           Login
         </Text>

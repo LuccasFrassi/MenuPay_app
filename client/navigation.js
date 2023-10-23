@@ -13,6 +13,8 @@ import RegisterScreen from "./screens/RegisterScreen";
 import { StatusBar } from "react-native";
 import Profile from "./screens/Profile";
 import OrderListScreen from "./screens/OrderListScreen";
+import LoginCompanyScreen from "./screens/LoginCompanyScreen";
+import RegisterCompanyScreen from "./screens/RegisterCompanyScreen";
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -74,6 +76,16 @@ export default function Navigation() {
           name="Delivery"
           options={{ presentation: "fullScreenModal", headerShown: false }}
           component={DeliveryScreen}
+        />
+        <Stack.Screen
+          name="LoginCompany"
+          component={LoginCompanyScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="RegisterCompany"
+          component={RegisterCompanyScreen}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

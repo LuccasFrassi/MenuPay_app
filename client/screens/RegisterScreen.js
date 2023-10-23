@@ -38,7 +38,7 @@ const Register = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/hamburguer_background.png')}
+        source={require('../assets/bg_red.png')}
         style={{
           ...styles.backgroundImage,
         }}
