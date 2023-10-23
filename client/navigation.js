@@ -12,6 +12,7 @@ import DeliveryScreen from "./screens/DeliveryScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import { StatusBar } from "react-native";
 import Profile from "./screens/Profile";
+import OrderListScreen from "./screens/OrderListScreen";
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -47,6 +48,11 @@ export default function Navigation() {
         <Stack.Screen
           name="ConfigurationScreen"
           component={ConfigurationScreen}
+        />
+        <Stack.Screen
+          name="OrderList"
+          component={OrderListScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Profile"

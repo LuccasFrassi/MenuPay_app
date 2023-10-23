@@ -11,16 +11,16 @@ const NavigationBar = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cart')}>
-        <Icon name="shopping-cart" size={30} color="#520201" />
+        <Icon name="shopping-cart" size={35} color="#520201" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
-        <Icon name="home" size={30} color="#520201" />
+        <Icon name="home" size={35} color="#520201" />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OrderListScreen')}>
-        <Icon name="list-ul" size={30} color="#520201" />
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OrderList')}>
+        <Icon name="list-ul" size={35} color="#520201" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Profile')}>
-        <Icon name="user" size={30} color="#520201" />
+        <Icon name="user" size={35} color="#520201" />
       </TouchableOpacity>
     </View>
   );

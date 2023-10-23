@@ -8,14 +8,14 @@ export const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: "#E4B24F",
-    height: 80,
+    height: 60,
     width: "100%", // Garante que a largura seja 100% da tela
   },
   button: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingBottom: 20,
+    paddingBottom: 0,
   },
   buttonText: {
     color: "white",
