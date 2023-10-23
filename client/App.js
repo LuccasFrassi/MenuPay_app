@@ -12,6 +12,11 @@ import {
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto';
 
+import { LogBox } from 'react-native';
+
+
+LogBox.ignoreLogs(['expo-app-loading is deprecated']);
+
 export default function App() {
   const [splashComplete, setSplashComplete] = useState(false);
   const [customFontsLoaded, setCustomFontsLoaded] = useState(false);
