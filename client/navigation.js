@@ -15,6 +15,7 @@ import Profile from "./screens/Profile";
 import OrderListScreen from "./screens/OrderListScreen";
 import LoginCompanyScreen from "./screens/LoginCompanyScreen";
 import RegisterCompanyScreen from "./screens/RegisterCompanyScreen";
+import ReservationTableScreen from "./screens/ReservationTableScreen";
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -85,6 +86,11 @@ export default function Navigation() {
         <Stack.Screen
           name="RegisterCompany"
           component={RegisterCompanyScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ReservationTable"
+          component={ReservationTableScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

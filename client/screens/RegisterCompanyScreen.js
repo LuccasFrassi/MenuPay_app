@@ -13,7 +13,7 @@ import HeaderTitle from '../components/HeaderTitle';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [telefone, setTelefone] = useState('');
   const navigation = useNavigation();
 
   const handleRegister = () => {
@@ -60,13 +60,12 @@ const Register = () => {
           onChangeText={(text) => setPassword(text)}
           value={password}
         />
-        <Text style={styles.labelConfirm}>Confirmar Senha:</Text>
+        <Text style={[styles.label, { paddingLeft: 20, }]}>Telefone:</Text>
         <TextInput
-          style={[styles.input, { marginTop: 20 }]}
+          style={[styles.input, { marginTop: 20, }]}
           placeholder=''
-          secureTextEntry={true}
-          onChangeText={(text) => setPassword(text)}
-          value={password}
+          onChangeText={(text) => setTelefone(text)}
+          value={telefone}
         />
         <TouchableOpacity
           style={styles.buttonContainer}

@@ -55,7 +55,7 @@ const Login = () => {
 
       <HeaderTitle title={'Conecte-se!'} />
       <View style={styles.cmpcontainer}>
-        <Text style={styles.label}>CNJP: </Text>
+        <Text style={styles.label}>CNPJ: </Text>
         <TextInput
           style={[styles.input, { marginTop: 20 }]}
           placeholder=''

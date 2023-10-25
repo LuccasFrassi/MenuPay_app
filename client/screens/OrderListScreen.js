@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f8f9fa",
+
   },
   containerOrders: {
     backgroundColor: "#f8f9fa",
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   },
   listItemText: {
     marginLeft: 10,
-    fontSize: 20,
+    fontSize: 18,
   },
 });
 
