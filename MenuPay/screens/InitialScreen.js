@@ -1,21 +1,41 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ImageBackground,
+  Image,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import initialstyle from '../styles/InitialStyle';
 
 const InitialScreen = () => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-        <Text>InitialScreen</Text>
-    </View>
+    <ImageBackground
+      source={require('../assets/Mobile_SemT.png')}
+      style={initialstyle.background}
+    >
+      <Image
+        source={require('../assets/LogoHome.png')}
+        style={initialstyle.logo}
+        resizeMode='contain'
+      />
+      <View style={initialstyle.textWrapper}>
+        <Text style={initialstyle.textHeader}>Chega de</Text>
+        <Text style={{ ...initialstyle.textHeader, ...initialstyle.textHighlight }}>
+          esperar em fila!
+        </Text>
+      </View>
+      <View style={initialstyle.container}>
+        <TouchableOpacity
+          style={initialstyle.button}
+          onPress={() => navigation.navigate('Login')}
+        >
+          <Text style={initialstyle.buttonText}>Faça sua reserva em minutos</Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-});
-
 export default InitialScreen;

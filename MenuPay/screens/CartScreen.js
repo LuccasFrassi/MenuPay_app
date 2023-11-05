@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import NavegationBar from '../components/NavegationBar';
 
 const CartScreen = () => {
   return (
     <View style={styles.container}>
         <Text>CartScreen</Text>
+        <NavegationBar/>
     </View>
   );
 };

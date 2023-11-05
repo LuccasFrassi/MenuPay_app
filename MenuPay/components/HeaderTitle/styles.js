@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
   headerText: {
     color: '#7A0705',
     fontSize: 40,
-    fontFamily: 'Roboto_700Bold',
     fontStyle: 'italic',
     fontWeight: 'bold',
     textShadowColor: '#000',

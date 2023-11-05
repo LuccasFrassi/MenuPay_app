@@ -14,12 +14,17 @@ import OrderListScreen from "./screens/OrderListScreen";
 import LoginCompanyScreen from "./screens/LoginCompanyScreen";
 import RegisterCompanyScreen from "./screens/RegisterCompanyScreen";
 import ReservationTableScreen from "./screens/ReservationTableScreen";
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { useCallback } from 'react';
+import * as Font from 'expo-font';
+
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="InitialScreen">
       <Stack.Screen
         name="InitialScreen"
         component={InitialScreen}
@@ -84,9 +89,26 @@ function MyStack() {
   );
 }
 
+
+SplashScreen.preventAutoHideAsync();
+
+
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'RockStyle': require('./assets/fonts/RockStyle.ttf'),
+  });
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
-    <NavigationContainer>
+    
+    <NavigationContainer onReady={onLayoutRootView}>
       <MyStack />
     </NavigationContainer>
   );
