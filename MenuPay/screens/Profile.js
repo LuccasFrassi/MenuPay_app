@@ -1,22 +1,36 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import NavegationBar from '../components/NavegationBar';
+import React from "react";
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from "react-native";
+import NavegationBar from "../components/NavegationBar";
+import UserProfile from "../components/UserProfile";
+import LogoTop from "../components/LogoTop";
 
 const Profile = () => {
   return (
-    <View style={styles.container}>
-        <Text>Profile</Text>
-        <NavegationBar/>
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <LogoTop/>
+      <View style={styles.container}>
+        <UserProfile
+          name="Nome Sobrenome"
+          email="nome.sobrenome@gmail.com"
+          phone="13 12345-6789"
+          imageUrl="https://via.placeholder.com/100"
+        />
+        <NavegationBar />
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
   },
 });
 

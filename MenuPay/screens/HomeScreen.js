@@ -1,22 +1,34 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import NavegationBar from '../components/NavegationBar';
+import React from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  SafeAreaView,
+} from "react-native";
+import NavegationBar from "../components/NavegationBar";
+import LogoTop from "../components/LogoTop";
+import SearchBar from "../components/SearchBar";
 
 const HomeScreen = () => {
   return (
-    <View style={styles.container}>
-        <Text>Home Screen</Text>
-        <NavegationBar/>
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.header}>
+        <LogoTop/>
+        <SearchBar placeholder={"Pesquise aqui..."}/>
+      </View>
+      <NavegationBar />
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea:{
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
+  },
+  header: {
+
   },
 });
 
