@@ -15,8 +15,8 @@ const Profile = () => {
           phone="13 12345-6789"
           imageUrl="https://via.placeholder.com/100"
         />
-        <NavegationBar />
       </View>
+      <NavegationBar />
     </SafeAreaView>
   );
 };
