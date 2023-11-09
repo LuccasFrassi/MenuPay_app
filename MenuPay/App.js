@@ -18,12 +18,14 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import * as Font from 'expo-font';
+import { StatusBar } from "react-native";
 
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
+    
     <Stack.Navigator initialRouteName="InitialScreen">
       <Stack.Screen
         name="InitialScreen"
@@ -109,6 +111,11 @@ export default function App() {
   return (
     
     <NavigationContainer onReady={onLayoutRootView}>
+      <StatusBar
+        style="light"
+        translucent={true}
+        backgroundColor="transparent"
+      />
       <MyStack />
     </NavigationContainer>
   );
