@@ -1,4 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
   container: {
@@ -8,14 +10,15 @@ export const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: "#E4B24F",
-    height: 60,
-    width: "100%",
+    height: 70,
+    width: width,
   },
   button: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingBottom: 0,
+    paddingBottom: 15,
+    maxWidth: width / 3, // Dividir a largura em partes iguais para até 3 botões
   },
   buttonText: {
     color: "white",
