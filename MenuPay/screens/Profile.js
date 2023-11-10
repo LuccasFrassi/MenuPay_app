@@ -13,7 +13,7 @@ const Profile = () => {
           name="Nome Sobrenome"
           email="nome.sobrenome@gmail.com"
           phone="13 12345-6789"
-          imageUrl="https://via.placeholder.com/100"
+          imageUrl="https://img.icons8.com/3d-fluency/100/user-male-circle.png"
         />
       </View>
       <NavegationBar />

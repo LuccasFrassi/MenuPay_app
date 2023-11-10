@@ -18,7 +18,6 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingBottom: 15,
-    maxWidth: width / 3, // Dividir a largura em partes iguais para até 3 botões
   },
   buttonText: {
     color: "white",
