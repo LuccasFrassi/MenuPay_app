@@ -12,12 +12,20 @@ const imageFilters = [
   // ... adicione todas as imagens que você quer usar como filtros
 ];
 
-const ImageFilter = () => {
+const ImageFilter = ({ onSelectFilter }) => {
   const [selectedFilter, setSelectedFilter] = useState(null);
 
   const handleFilterSelect = (category) => {
-    setSelectedFilter(category);
+    // Se o filtro já está selecionado, desmarque-o, caso contrário, aplique o novo filtro
+    if (selectedFilter === category) {
+      setSelectedFilter(null);
+      onSelectFilter(null); // Chamada para remover o filtro
+    } else {
+      setSelectedFilter(category);
+      onSelectFilter(category); // Chamada para aplicar o filtro
+    }
   };
+
 
   return (
     <View style={styles.container}>

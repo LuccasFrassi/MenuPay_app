@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
-    height: '25%',
+    marginBottom: 20,
   },
   scrollViewContainer: {
     alignItems: "center",

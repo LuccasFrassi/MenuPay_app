@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { styles } from './styles';
 
-const NavigationBar = () => {
+const NavigationBar = ({ onHomePress }) => {
   const navigation = useNavigation();
 
   return (
@@ -12,7 +12,7 @@ const NavigationBar = () => {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cart')}>
         <Icon name="shopping-cart" size={35} color="#520201" />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity style={styles.button} onPress={onHomePress || (() => navigation.navigate('Home'))}>
         <Icon name="home" size={35} color="#520201" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OrderList')}>
