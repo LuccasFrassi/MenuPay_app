@@ -14,6 +14,7 @@ import SearchBar from "../components/SearchBar";
 import { StatusBar } from "react-native";
 import ImageFilter from "../components/ImageFilter";
 import RestaurantCard from "../components/RestaurantCard";
+import TitleSubtitleComponent from "../components/TitleSubtitleComponent";
 
 const HomeScreen = ({ navigation }) => {
   const restaurants = [
@@ -38,31 +39,47 @@ const HomeScreen = ({ navigation }) => {
   ];
 
   const [filter, setFilter] = useState(null);
-  
+
+  const [searchQuery, setSearchQuery] = useState("");
+
   const handleSelectFilter = (category) => {
     setFilter(category);
   };
 
   const handleHomePress = () => {
     setFilter(null);
-    navigation.navigate('Home');
+    navigation.navigate("Home");
   };
 
-  const filteredRestaurants = filter
-    ? restaurants.filter((restaurant) => restaurant.type === filter)
-    : restaurants;
-  
+  const handleSearchChange = (query) => {
+    setSearchQuery(query);
+  };
+
+  const filteredRestaurants = restaurants.filter((restaurant) => {
+    return (
+      (filter ? restaurant.type === filter : true) &&
+      restaurant.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" />
       <View style={styles.header}>
         <LogoTop />
-        <SearchBar placeholder={"Pesquise aqui..."} />
+        <SearchBar
+          placeholder={"Pesquise aqui..."}
+          searchQuery={searchQuery}
+          setSearchQuery={handleSearchChange}
+        />
         <ImageFilter onSelectFilter={handleSelectFilter} />
       </View>
       <ScrollView>
         <View style={styles.main}>
+          <TitleSubtitleComponent
+            title="Destaques"
+            subtitle="Melhores do aplicativo"
+          />
           <FlatList
             horizontal
             data={filteredRestaurants}
@@ -74,7 +91,7 @@ const HomeScreen = ({ navigation }) => {
           />
         </View>
       </ScrollView>
-      <NavegationBar onHomePress={handleHomePress}/>
+      <NavegationBar onHomePress={handleHomePress} />
     </SafeAreaView>
   );
 };

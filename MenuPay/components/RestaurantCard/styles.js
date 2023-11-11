@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 export default StyleSheet.create({
   card: {
@@ -7,12 +7,19 @@ export default StyleSheet.create({
     width: 240,
     height: 230,
     margin: 8,
-    elevation: 3, // Sombras no Android
-    shadowColor: "#000", // Sombras no iOS
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    overflow: "hidden",
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+
+      },
+      android: {
+        elevation: 3,
+        overflow: 'hidden',
+      },
+    }),
   },
   title: {
     fontSize: 18,
@@ -21,7 +28,7 @@ export default StyleSheet.create({
   image: {
     width: "100%", 
     height: 130, 
-    resizeMode: "cover", 
+    resizeMode: "cover",
   },
   info: {
     padding: 8,
@@ -29,6 +36,7 @@ export default StyleSheet.create({
   detailsRow: {
     flexDirection: "row",
     alignItems: "center",
+    
   },
   dotIcon: {
     marginHorizontal: 6,

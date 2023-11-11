@@ -32,7 +32,6 @@ export default StyleSheet.create({
   },
   selectedFilterText: {
     marginTop: 10,
-    // Estilize como preferir para o texto
   },
   optionView: {
     display: "flex",
