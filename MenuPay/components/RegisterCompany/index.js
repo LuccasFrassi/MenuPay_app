@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   TextInput,
@@ -21,7 +21,9 @@ const RegisterScreen = () => {
 
   const [phoneNumber, setPhoneNumber] = useState('');
   const handlePhoneNumberChange = (text) => {
-    const formattedPhoneNumber = text.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+    let formattedPhoneNumber = text.replace(/[^\d]/g, ''); // Remove qualquer caractere não numérico
+    formattedPhoneNumber = formattedPhoneNumber.substring(0, 11); // Limita a 11 dígitos
+    formattedPhoneNumber = formattedPhoneNumber.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
     setPhoneNumber(formattedPhoneNumber);
   };
 
@@ -44,8 +46,11 @@ const RegisterScreen = () => {
 
         <Text style={styles.label}>Telefone:</Text>
         <TextInput
-          placeholder="Digite o número..."
-          style={styles.input}
+         placeholder="(DD) XXXX-XXXX"
+         style={styles.input}
+         keyboardType="phone-pad"
+         onChangeText={handlePhoneNumberChange}
+         value={phoneNumber}
         />
         <Text style={styles.label}>Senha:</Text>
         <TextInput
