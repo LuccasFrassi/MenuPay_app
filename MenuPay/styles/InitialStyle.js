@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const initialstyles = StyleSheet.create({
+const initialstyle = StyleSheet.create({
     background: {
       flex: 1,
       justifyContent: 'center',
@@ -46,4 +46,4 @@ const initialstyles = StyleSheet.create({
     },
   });
 
-  export default initialstyles
+  export default initialstyle

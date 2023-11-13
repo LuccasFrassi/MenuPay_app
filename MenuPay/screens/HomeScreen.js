@@ -7,6 +7,10 @@ import {
   SafeAreaView,
   ScrollView,
   FlatList,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from "react-native";
 import NavegationBar from "../components/NavegationBar";
 import LogoTop from "../components/LogoTop";
@@ -39,15 +43,18 @@ const HomeScreen = ({ navigation }) => {
   ];
 
   const [filter, setFilter] = useState(null);
-
+  const [categoryButtonSelected, setCategoryButtonSelected] = useState(null); // Adiciona um estado para controlar o botão da categoria
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSelectFilter = (category) => {
     setFilter(category);
+    setCategoryButtonSelected(category); // Atualiza o estado do botão da categoria quando um filtro é selecionado
   };
 
   const handleHomePress = () => {
     setFilter(null);
+    setCategoryButtonSelected(null); // Desseleciona o botão da categoria
+    setSearchQuery(""); // Limpa a consulta de pesquisa
     navigation.navigate("Home");
   };
 
@@ -72,7 +79,7 @@ const HomeScreen = ({ navigation }) => {
           searchQuery={searchQuery}
           setSearchQuery={handleSearchChange}
         />
-        <ImageFilter onSelectFilter={handleSelectFilter} />
+        <ImageFilter onSelectFilter={handleSelectFilter} selectedCategory={categoryButtonSelected} />
       </View>
       <ScrollView>
         <View style={styles.main}>
@@ -100,6 +107,7 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: "#fff",
+
   },
   main: {
     width: "100%",

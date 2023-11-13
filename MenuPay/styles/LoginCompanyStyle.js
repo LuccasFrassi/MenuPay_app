@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const loginstyle = StyleSheet.create({
+const logincompanystyle = StyleSheet.create({
     container: {
       flexGrow: 1,
       backgroundColor: '#520201',
@@ -33,7 +33,7 @@ const loginstyle = StyleSheet.create({
       shadowOpacity: 0.4,
       shadowRadius: 4,
       elevation: 4,
-      marginBottom: 8, 
+      marginBottom: 8,
       paddingHorizontal: 16, // Ajuste o espaçamento horizontal interno conforme necessário
       paddingVertical: 10,   // Ajuste o espaçamento vertical interno conforme necessário
     },
@@ -118,5 +118,6 @@ const loginstyle = StyleSheet.create({
       lineHeight: 53.35, // 3.33781rem = 53.35 (1rem = 16px)
     },
   });
-  
-  export default loginstyle
+
+
+  export default logincompanystyle

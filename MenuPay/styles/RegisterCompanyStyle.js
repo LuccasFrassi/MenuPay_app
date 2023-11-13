@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const loginstyle = StyleSheet.create({
+const registercompanystyle = StyleSheet.create({
     container: {
       flexGrow: 1,
       backgroundColor: '#520201',
@@ -16,7 +16,7 @@ const loginstyle = StyleSheet.create({
     cmpcontainer: {
       flexGrow: 1,
       alignItems: 'center',
-      marginTop: 30,
+      paddingTop: 60,
     },
     input: {
       width: 350,
@@ -33,9 +33,10 @@ const loginstyle = StyleSheet.create({
       shadowOpacity: 0.4,
       shadowRadius: 4,
       elevation: 4,
-      marginBottom: 8, 
+      marginBottom: 0,
       paddingHorizontal: 16, // Ajuste o espaçamento horizontal interno conforme necessário
       paddingVertical: 10,   // Ajuste o espaçamento vertical interno conforme necessário
+
     },
     logo: {
       width: 300,
@@ -66,8 +67,21 @@ const loginstyle = StyleSheet.create({
       shadowOpacity: 0.4,
       shadowRadius: 4,
     },
+    label: {
+      height: 60,
+      color: '#E4B24F',
+      marginBottom: -18,
+      textShadowColor: '#000',
+      textShadowOffset: { width: 0, height: 4 },
+      textShadowRadius: 4,
+      fontSize: 25,
+      fontStyle: 'italic',
+      fontWeight: '500',
+      lineHeight: 83.48,
+      paddingRight: 250,
+    },
     buttonText: {
-      color: '#7A0705', // Cor do texto
+      color: '#7A0705',
       textAlign: 'center',
       textShadowColor: '#000',
       textShadowOffset: {
@@ -75,26 +89,10 @@ const loginstyle = StyleSheet.create({
         height: 2,
       },
       textShadowRadius: 4,
-      fontSize: 36, // 2.25rem = 36 (1rem = 16px)
+      fontSize: 36,
       fontStyle: 'italic',
       fontWeight: '500',
-      lineHeight: 45, // 1.25rem = 20 (1rem = 16px)
-    },
-    label: {
-      height: 60,
-      color: '#E4B24F',
-      marginBottom: -3,
-      textShadowColor: '#000',
-      textShadowOffset: {
-        width: 0,
-        height: 4,
-      },
-      textShadowRadius: 4,
-      fontSize: 25,
-      fontStyle: 'italic',
-      fontWeight: '500',
-      lineHeight: 83.48,
-      paddingRight: 250,
+      lineHeight: 45,
     },
     signupLabel: {
       color: '#E4B24F',
@@ -117,6 +115,19 @@ const loginstyle = StyleSheet.create({
       fontWeight: '500',
       lineHeight: 53.35, // 3.33781rem = 53.35 (1rem = 16px)
     },
+    labelConfirm: {
+      color: '#E4B24F',
+      textAlign: 'center',
+      textShadowColor: '#000',
+      textShadowOffset: { width: 0, height: 4 },
+      textShadowRadius: 4,
+      fontSize: 25, // 1.5625rem em pixels (considerando 16 pixels por rem)
+      fontStyle: 'italic',
+      fontWeight: '500',
+      lineHeight: 80, // 3.33781rem em pixels (considerando 24 pixels por rem)
+      paddingRight: 145,
+      marginBottom: -40,
+    },
   });
-  
-  export default loginstyle
+
+  export default registercompanystyle

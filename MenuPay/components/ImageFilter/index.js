@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Image, ScrollView, TouchableOpacity, Text } from "react-native";
 import styles from "./styles";
 
@@ -12,8 +12,13 @@ const imageFilters = [
   // ... adicione todas as imagens que você quer usar como filtros
 ];
 
-const ImageFilter = ({ onSelectFilter }) => {
+const ImageFilter = ({ onSelectFilter, selectedCategory }) => {
   const [selectedFilter, setSelectedFilter] = useState(null);
+
+  useEffect(() => {
+    // Atualiza o estado interno do componente com base na propriedade selectedCategory
+    setSelectedFilter(selectedCategory);
+  }, [selectedCategory]);
 
   const handleFilterSelect = (category) => {
     // Se o filtro já está selecionado, desmarque-o, caso contrário, aplique o novo filtro
@@ -25,7 +30,6 @@ const ImageFilter = ({ onSelectFilter }) => {
       onSelectFilter(category); // Chamada para aplicar o filtro
     }
   };
-
 
   return (
     <View style={styles.container}>
@@ -46,9 +50,7 @@ const ImageFilter = ({ onSelectFilter }) => {
             >
               <Image source={filter.source} style={styles.image} />
             </TouchableOpacity>
-            <Text style={styles.optionViewText}>
-              {filter.category}
-            </Text>
+            <Text style={styles.optionViewText}>{filter.category}</Text>
           </View>
         ))}
       </ScrollView>

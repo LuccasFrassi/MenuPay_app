@@ -13,7 +13,10 @@ const Login = () => {
     // Verifique as credenciais do usuário (exemplo simplificado)
     if (email === '' && password === '') {
       // Login bem-sucedido, navegue para a tela "Home"
-      navigation.navigate('Home'); // "Home" é o nome da tela de destino
+      navigation.reset({
+        index: 0,
+        routes: [{name: "Home"}]
+      })
     } else {
       // Caso contrário, exiba uma mensagem de erro ou faça o que for necessário
       console.log('Credenciais inválidas');
@@ -22,7 +25,10 @@ const Login = () => {
 
   const handleSignUp = () => {
     // Navegue para a tela de cadastro
-    navigation.navigate('RegisterScreen');
+    navigation.reset({
+      index: 0,
+      routes: [{name: "Home"}]
+    })
   };
 
   const handleLoginCompany = () => {
@@ -30,6 +36,7 @@ const Login = () => {
     navigation.navigate('LoginCompany');
   };
   return (
+      
     <View style={loginstyle.container}>
       <Image
         source={require('../assets/bg_red.png')}
@@ -44,6 +51,7 @@ const Login = () => {
           placeholder=''
           onChangeText={(text) => setEmail(text)}
           value={email}
+          keyboardType="email-address"
         />
         <Text style={loginstyle.label}>Senha:</Text>
         <TextInput
