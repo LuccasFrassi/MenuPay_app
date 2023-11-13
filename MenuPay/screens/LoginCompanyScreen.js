@@ -1,20 +1,44 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React from "react";
+import { View, StyleSheet, SafeAreaView, Image } from "react-native";
+import LoginCompany from "../components/LoginCompany";
+import LogoTop from "../components/LogoTop";
 
 const LoginCompanyScreen = () => {
   return (
-    <View style={styles.container}>
-        <Text>LoginCompanyScreen</Text>
+    <View style={styles.view}>
+      <Image
+        source={require("../assets/bg_red.png")}
+        style={styles.backgroundImage}
+      />
+      <View style={styles.header}>
+        <LogoTop />
+      </View>
+      <View style={styles.main}>
+        <LoginCompany />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  view: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+  },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '113%',
+  },
+  main: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  header: {
+    marginTop: 10,
+    marginBottom: -150,
   },
 });
 

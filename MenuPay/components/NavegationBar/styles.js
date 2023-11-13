@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions, Platform } from "react-native";
 
 const { width } = Dimensions.get("window");
 
@@ -17,7 +17,14 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingBottom: 15,
+    ...Platform.select({
+      ios: {
+        paddingBottom: 16,
+      },
+      android: {
+        paddingBottom: 0,
+      },
+    }),
   },
   buttonText: {
     color: "white",
