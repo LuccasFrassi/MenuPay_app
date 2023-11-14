@@ -14,18 +14,17 @@ import OrderListScreen from "./screens/OrderListScreen";
 import LoginCompanyScreen from "./screens/LoginCompanyScreen";
 import RegisterCompanyScreen from "./screens/RegisterCompanyScreen";
 import ReservationTableScreen from "./screens/ReservationTableScreen";
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { useCallback } from 'react';
-import * as Font from 'expo-font';
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { useCallback } from "react";
+import * as Font from "expo-font";
 import { StatusBar } from "react-native";
-
+import HomeScreenCompany from "./screens/HomeScreenCompany";
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    
     <Stack.Navigator initialRouteName="InitialScreen">
       <Stack.Screen
         name="InitialScreen"
@@ -87,17 +86,20 @@ function MyStack() {
         component={ReservationTableScreen}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="HomeCompany"
+        component={HomeScreenCompany}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }
 
-
 SplashScreen.preventAutoHideAsync();
-
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    'RockStyle': require('./assets/fonts/RockStyle.ttf'),
+    RockStyle: require("./assets/fonts/RockStyle.ttf"),
   });
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
@@ -109,7 +111,6 @@ export default function App() {
     return null;
   }
   return (
-    
     <NavigationContainer onReady={onLayoutRootView}>
       <StatusBar
         style="light"

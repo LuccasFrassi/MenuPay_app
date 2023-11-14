@@ -13,6 +13,10 @@ const LoginScreen = () => {
       const handleClient = () => {
         navigation.navigate('Login');
       };
+
+      const handleEntrar = () => {
+        navigation.navigate('HomeCompany');
+      };
     
 
   return (
@@ -33,7 +37,7 @@ const LoginScreen = () => {
           secureTextEntry
           style={styles.input}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleEntrar}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleCreate}>
