@@ -11,45 +11,26 @@ import {
 import LogoTop from "../components/LogoTop";
 import RegisterCompany from "../components/RegisterCompany";
 import HeaderTitle from '../components/HeaderTitle';
+import registercompanystyle from "../styles/RegisterCompanyStyle";
 
 const Register = () => {
   return (
-    <View style={styles.view}>
+    <View style={registercompanystyle.view}>
       <Image
         source={require("../assets/bg_red.png")}
-        style={styles.backgroundImage}
+        style={registercompanystyle.backgroundImage}
       />
-      <View style={styles.header}>
+      <View style={registercompanystyle.header}>
         <LogoTop />
       </View>
-      <View style={styles.main}>
+      <View style={registercompanystyle.main}>
         <RegisterCompany/>
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  view: {
-    flex: 1,
-  },
-  backgroundImage: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '113%',
-  },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  header: {
-    marginTop: 10,
-    marginBottom: -50,
-  },
-});
+
 
 
 export default Register;

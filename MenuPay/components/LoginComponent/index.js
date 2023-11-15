@@ -3,19 +3,21 @@ import { StyleSheet, View, TextInput, Image, TouchableOpacity, Text } from 'reac
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
-const LoginScreen = () => {
+const LoginComponent = () => {
 
     const navigation = useNavigation();
+    const handleLogin = () => {
+      navigation.reset({
+        index: 0,
+        routes: [{name: "Home"}]
+      })
+    };
     const handleCreate = () => {
-        navigation.navigate('RegisterCompany');
+        navigation.navigate('RegisterScreen');
       };
 
-      const handleClient = () => {
-        navigation.navigate('Login');
-      };
-
-      const handleEntrar = () => {
-        navigation.navigate('HomeCompany');
+      const handleCompany = () => {
+        navigation.navigate('LoginCompany');
       };
     
 
@@ -23,13 +25,14 @@ const LoginScreen = () => {
     <View style={styles.container}>
       <View style={styles.loginBox}>
         <Image
-          source={require("../../assets/company.png")}
+          source={require("../../assets/iconlogin.png")}
           style={styles.logo}
         />
         <Text style={styles.label}>E-mail:</Text>
         <TextInput
           placeholder="Digite seu e-mail..."
           style={styles.input}
+          keyboardType="email-address"
         />
         <Text style={styles.label}>Senha:</Text>
         <TextInput
@@ -37,18 +40,18 @@ const LoginScreen = () => {
           secureTextEntry
           style={styles.input}
         />
-        <TouchableOpacity style={styles.button} onPress={handleEntrar}>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleCreate}>
           <Text style={styles.linkText}>Primeiro acesso?</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleClient}>
-          <Text style={styles.linkText}>Entrar como cliente?</Text>
+        <TouchableOpacity onPress={handleCompany}>
+          <Text style={styles.linkText}>Entrar como empresa?</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-export default LoginScreen;
+export default LoginComponent;
