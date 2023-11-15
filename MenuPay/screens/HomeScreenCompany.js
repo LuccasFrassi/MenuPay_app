@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { StatusBar } from "react-native";
-import { View, Text, FlatList, StyleSheet, Button } from "react-native";
+import { StatusBar, View, Text, FlatList, StyleSheet, Button } from "react-native";
+import Logout from '../components/Logout';
 
 const Dashboard = () => {
-  // Sample data with added dishes and status
   const initialReservations = [
     {
       id: "1",
@@ -16,7 +15,7 @@ const Dashboard = () => {
         { name: "Spaghetti", quantity: 2 },
         { name: "Caesar Salad", quantity: 1 },
       ],
-      status: "Pending", // Initial status
+      status: "Pending", // Status inicial
     },
     {
       id: "2",
@@ -29,14 +28,13 @@ const Dashboard = () => {
         { name: "Spaghetti", quantity: 2 },
         { name: "Caesar Salad", quantity: 1 },
       ],
-      status: "Pending", // Initial status
+      status: "Pending", // Status inicial
     },
   ];
 
   const [reservations, setReservations] = useState(initialReservations);
   const [completedReservations, setCompletedReservations] = useState([]);
 
-  // Função atualizada para gerenciar o status da reserva
   const updateStatus = (id, newStatus) => {
     const updatedReservations = reservations.filter((reservation) => {
       if (reservation.id === id && newStatus === "Completed") {
@@ -54,9 +52,11 @@ const Dashboard = () => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      <Text style={styles.header}>Restaurante Dashboard</Text>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Painel do Restaurante</Text>
+        <Logout />
+      </View>
 
-      {/* Lista de Reservas */}
       <FlatList
         data={[...reservations, ...completedReservations]}
         keyExtractor={(item) => item.id}
@@ -73,7 +73,7 @@ const Dashboard = () => {
             <Text style={styles.cardText}>Telefone: {item.phone}</Text>
             <Text style={styles.cardText}>Data: {item.date}</Text>
             <Text style={styles.cardText}>Hora: {item.time}</Text>
-            <Text style={styles.cardText}>Quant.Pessoas: {item.people}</Text>
+            <Text style={styles.cardText}>Quantidade de Pessoas: {item.people}</Text>
             <View style={styles.dishes}>
               {item.dishes.map((dish, index) => (
                 <Text key={index} style={styles.dishText}>
@@ -82,7 +82,7 @@ const Dashboard = () => {
               ))}
             </View>
             <Text style={styles.status}>
-              Status: {item.status}
+              Status: {item.status === "Pending" ? "Pendente" : "Concluído"}
               {item.status === "Pending" && (
                 <Text style={styles.pendingIndicator}> 🔴</Text>
               )}
@@ -92,7 +92,7 @@ const Dashboard = () => {
             </Text>
             {item.status === "Pending" && (
               <Button
-                title="Mark as Completed"
+                title="Marcar como Concluído"
                 onPress={() => updateStatus(item.id, "Completed")}
               />
             )}
@@ -110,10 +110,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   header: {
+    flexDirection: 'row',     // Alinha os itens horizontalmente
+    alignItems: 'center',     // Centraliza verticalmente
+    justifyContent: 'space-between', // Espaçamento entre o título e o botão
     marginTop: 50,
+    marginBottom: 20,
+  },
+  headerText: {
     fontSize: 22,
     fontWeight: "bold",
-    marginBottom: 20,
   },
   card: {
     backgroundColor: "#f9f9f9",
@@ -133,8 +138,9 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   status: {
+    paddingBottom: 10,
     fontSize: 16,
-    marginTop: 10,
+    marginTop: 15,
     fontWeight: "bold",
   },
   cardPending: {
