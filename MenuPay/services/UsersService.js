@@ -6,7 +6,7 @@ class UsersService{
     
     async register(data){
         return axios({
-            url: "http://192.168.42.110:3000/users/register",
+            url: "http://26.139.49.207:3000/users/register",
             method: "POST",
             timeout: 5000,
             data: data,

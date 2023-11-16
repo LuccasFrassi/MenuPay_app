@@ -30,6 +30,20 @@ const HomeScreen = ({ navigation }) => {
       type: "Pizzaria",
       rating: 4.5,
       address: "123 Rua fictícia",
+      menu: [
+        {
+          _id: '1',
+          name: 'Spaghetti à Carbonara ($21)',
+          description: 'Massa italiana à Carbonara com molho à base de gema, parmesão e cubos de panceta temperados',
+          price: 21,
+        },
+        {
+          _id: '2',
+          name: 'Pizza Margherita ($18)',
+          description: 'Molho de tomate fresco, muçarela de búfala, manjericão e azeite de oliva extra virgem',
+          price: 18,
+        },
+      ],
     },
     {
       id: "2",
@@ -39,8 +53,23 @@ const HomeScreen = ({ navigation }) => {
       type: "Mexicana",
       rating: 4.1,
       address: "123 Rua fictícia da silva",
+      menu: [
+        {
+          _id: '1',
+          name: 'Tacos Al Pastor ($12)',
+          description: 'Os tacos al pastor são tortilhas de milho macias recheadas com carne de porco marinada em especiarias, abacaxi grelhado, cebola e coentro. É um prato clássico da culinária mexicana.',
+          price: 12,
+        },
+        {
+          _id: '2',
+          name: 'Guacamole com Nachos ($8)',
+          description: 'Guacamole é um mergulho de abacate fresco, tomate, cebola, coentro e suco de limão. É servido com nachos crocantes para mergulhar. É uma entrada popular em restaurantes mexicanos.',
+          price: 8,
+        },
+      ],
     },
   ];
+  
 
   const [filter, setFilter] = useState(null);
   const [categoryButtonSelected, setCategoryButtonSelected] = useState(null); // Adiciona um estado para controlar o botão da categoria

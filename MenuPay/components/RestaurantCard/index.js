@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const RestaurantCard = ({ restaurant, navigation }) => {
   const handlePress = () => {
-    navigation.navigate('RestaurantDetails', { restaurant });
+    navigation.navigate('ReservationTable', { restaurant });
   };
 
   return (
