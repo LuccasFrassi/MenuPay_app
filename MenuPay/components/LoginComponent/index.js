@@ -1,16 +1,32 @@
-import React from 'react';
-import { StyleSheet, View, TextInput, Image, TouchableOpacity, Text } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, View, TextInput, Image, TouchableOpacity, Text, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
+import usersService from "../../services/UsersService";
 
 const LoginComponent = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
 
     const navigation = useNavigation();
     const handleLogin = () => {
-      navigation.reset({
-        index: 0,
-        routes: [{name: "Home"}]
-      })
+      let data = {
+        username: email,
+        password: password
+      }
+    
+      usersService.login(data)
+        .then((response) => {
+          console.log(response.data);
+          Alert.alert("Login feito com sucesso!")
+                navigation.navigate("Home");
+        })
+        .catch((error) => {
+          Alert.alert("Usuário não existe")
+          console.log("Cadastro não encontrado!") 
+        });
     };
     const handleCreate = () => {
         navigation.navigate('RegisterScreen');
@@ -30,15 +46,18 @@ const LoginComponent = () => {
         />
         <Text style={styles.label}>E-mail:</Text>
         <TextInput
-          placeholder="Digite seu e-mail..."
+          placeholder="Digite o e-mail..."
           style={styles.input}
-          keyboardType="email-address"
+          onChangeText={setEmail}
+          value={email}
         />
         <Text style={styles.label}>Senha:</Text>
         <TextInput
           placeholder="Digite sua senha..."
           secureTextEntry
           style={styles.input}
+          onChangeText={setPassword}
+          value={password}
         />
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Entrar</Text>
