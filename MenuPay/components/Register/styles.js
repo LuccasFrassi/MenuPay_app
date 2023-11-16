@@ -62,5 +62,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 10,
     textDecorationLine: 'underline',
+    
   },
 });
